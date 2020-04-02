@@ -1,6 +1,7 @@
 const app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+const PORT = process.env.PORT;
 
 app.get('/', (req, res) =>{
     res.sendFile(__dirname + '/index.html');
@@ -16,6 +17,6 @@ io.on('connection', (socket)=>{
     })
 });
 
-http.listen(80, ()=>{
+http.listen(PORT, ()=>{
     console.log('server start');
 });
